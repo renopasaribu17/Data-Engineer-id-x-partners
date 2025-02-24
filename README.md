@@ -14,41 +14,47 @@ This project was completed as part of the Data Engineer Test for ID/X Partners. 
 The client faced challenges in extracting data from various sources (Excel, CSV, and SQL Server databases) simultaneously, leading to delays in reporting and data analysis. The primary objective was to streamline the ETL process and create a centralized Data Warehouse to facilitate efficient data analysis and reporting.
 
 ## Solution
+### Data Warehouse Creation
+- Restore sample.bak database is done as a data source to be used
+- Create Data Warehouse database
 
-### Buikd a Data Warehouse (DWH) with dimension and fact tables
+![img_url]()
 
--
+- Design and implement a new Data Warehouse named `DWH` with three dimension tables (`DimAccount`, `DimCustomer`, `DimBranch`) and one fact table (`FactTransaction`).
 
-### Create ETL Jobs for data migration and deduplication
+![img_url]()
 
--
+### Create ETL Job for Dimension Table
+- Each database connection is created to connect Microsoft SQL Server to Talend
 
-### Stored Procedures
+![img_url]()
 
-#### Stored Procedure - Daily Transaction
+- Schema retrieval is performed for each table created in DWH database or sample.bak
 
-#### Stored Procedure - Balance Per-Customer
+![img_url]()
 
+- Develop ETL jobs using Talend to migrate data from various sources into the dimension tables.
+- Specifically, transform and load data into the `DimCustomer` table from the combination of the customer, city and state tables to retrieve the CityName and StateName columns.
+- UPCASE is used so that the output becomes capitalized according to the provisions.
 
+![img_url]()
 
-## Data Preprocessing
+### Create ETL Job for Fact Table
 
-### Data Collection
-- The dataset consists of 4 CSV files containing transaction data, sales, customer ratings, and product inventory.
-- Using DBeaver to check the structure and quality of the data before uploading to BigQuery.
+- Combine transaction data from Excel, CSV, and SQL Server into a single `FactTransaction` table, ensuring no duplicate rows.
+- Change the column name to Pascal Case then and the date format to "yyyy-MM-dd HH:mm:ss" using tMap
 
-![img_url](https://github.com/renopasaribu17/Big-Data-Analytics-KimiaFarma/blob/main/assets/Data%20Preparation.png?raw=true)
+![img_url]()
 
-## Data Analysis and Aggregation
+4. **Stored Procedures**: Create two stored procedures (`DailyTransaction` and `BalancePerCustomer`) to provide quick summaries of transaction data and customer balances.
 
-### Transaction, branch, and product data are combined using SQL in BigQuery.
-Joining Data:
-- Using LEFT JOIN to integrate the transaction table with the branch and product tables.
+## Results
+- Successfully created the Data Warehouse and implemented the required ETL processes.
+- Developed stored procedures to provide quick data summaries.
+- Achieved efficient data extraction, transformation, and loading from multiple sources.
 
-Calculating New Columns:
-- Gross Profit Percentage by price category.
-- Net Sales after discounts.
-- Net Profit based on gross profit percentage.
+## Conclusion
+This project demonstrated the ability to design and implement a Data Warehouse, develop ETL processes, and create stored procedures to optimize data analysis and reporting for a banking industry client.
 
 <details>
   <summary>SQL Query</summary>
