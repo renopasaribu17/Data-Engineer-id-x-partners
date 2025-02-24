@@ -6,9 +6,9 @@ This project was completed as part of the Data Engineer Test for ID/X Partners. 
 
 ### Tools & Technologies Used:
 - 🦫 Open Talend Studio
-- 📁 Microsoft SQL Server
+- 📊 Microsoft SQL Server
 - ⌨ Server Management Studio (SSMS)
-- 📊 GitHub
+- 📁 GitHub
 
 ## Problem Statement
 The client faced challenges in extracting data from various sources (Excel, CSV, and SQL Server databases) simultaneously, leading to delays in reporting and data analysis. The primary objective was to streamline the ETL process and create a centralized Data Warehouse to facilitate efficient data analysis and reporting.
