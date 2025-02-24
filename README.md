@@ -18,37 +18,37 @@ The client faced challenges in extracting data from various sources (Excel, CSV,
 - Restore sample.bak database is done as a data source to be used
 - Create Data Warehouse database
 
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/Restoring%20sample.bak%20and%20created%20Data%20Warehouse%20database.png)
 
 - Design and implement a new Data Warehouse named `DWH` with three dimension tables (`DimAccount`, `DimCustomer`, `DimBranch`) and one fact table (`FactTransaction`).
 
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/Create%20Dimension%20%26%20Fact%20Table.png)
 
 ### Create ETL Job for Dimension Table
 - Each database connection is created to connect Microsoft SQL Server to Talend
 
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/Database%20Connection.png)
 
 - Schema retrieval is performed for each table created in DWH database or sample.bak
 
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/Retrieve%20Schema.png)
 
 - Develop ETL jobs using Talend to migrate data from various sources into the dimension tables.
 - Specifically, transform and load data into the `DimCustomer` table from the combination of the customer, city and state tables to retrieve the CityName and StateName columns.
 - UPCASE is used so that the output becomes capitalized according to the provisions.
 
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/ETL%20Job%20Dimension%20Table.png)
 
 ### Create ETL Job for Fact Table
 
 - Combine transaction data from Excel, CSV, and SQL Server into a single `FactTransaction` table, ensuring no duplicate rows.
 - Change the column name to Pascal Case then and the date format to "yyyy-MM-dd HH:mm:ss" using tMap
 
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/ETL%20Job%20Fact%20Table.png)
 
 - ETL results are checked via Talend in SSMS using the SELECT query for each Dimensional Table and Fact Table.
 
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/ETL%20Results.png)
 
 ### Create 2 Stored Procedures
 - Stored procedures (`DailyTransaction`) used to help calculate the number of transactions and their total nominal value each day.
@@ -88,7 +88,7 @@ EXEC DailyTransaction '2024-01-15', '2024-01-20'
 ```
 
 Result:
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/SP%20-%20DailyTransaction.png)
 
 - Stored procedures (`BalancePerCustomer`) used to find out the remaining balance per-customer
 
@@ -130,7 +130,7 @@ EXEC BalancePerCustomer @name = 'Shelly'
 ```
 
 Result:
-![img_url]()
+![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/SP%20-%20BalancePerCustomer.png)
 
 ## Results
 - Successfully created the Data Warehouse and implemented the required ETL processes.
