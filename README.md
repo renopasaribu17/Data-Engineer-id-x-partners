@@ -48,7 +48,9 @@ The client faced challenges in extracting data from various sources (Excel, CSV,
 
 - ETL results are checked via Talend in SSMS using the SELECT query for each Dimensional Table and Fact Table.
 
-![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/ETL%20Results.png)
+<div align="center">
+  <img width = "80%" src="https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/ETL%20Results.png">
+</div>
 
 ### Create 2 Stored Procedures
 - Stored procedures (`DailyTransaction`) used to help calculate the number of transactions and their total nominal value each day.
@@ -88,7 +90,9 @@ EXEC DailyTransaction '2024-01-15', '2024-01-20'
 ```
 
 Result:
-![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/SP%20-%20DailyTransaction.png)
+<div align="center">
+<img width = "50%" src = "https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/SP%20-%20DailyTransaction.png">
+</div>
 
 - Stored procedures (`BalancePerCustomer`) used to find out the remaining balance per-customer
 
@@ -130,7 +134,9 @@ EXEC BalancePerCustomer @name = 'Shelly'
 ```
 
 Result:
-![img_url](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/SP%20-%20BalancePerCustomer.png)
+<div align="center">
+<img width = "50%" src = "https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/assets/SP%20-%20BalancePerCustomer.png">
+</div>
 
 ## Results
 - Successfully created the Data Warehouse and implemented the required ETL processes.
@@ -141,7 +147,8 @@ Result:
 This project demonstrated the ability to design and implement a Data Warehouse, develop ETL processes, and create stored procedures to optimize data analysis and reporting for a banking industry client.
 
 ## Project Deliverables
-- 💻 [BigQuery SQL Syntax](https://github.com/renopasaribu17/Big-Data-Analytics-KimiaFarma/blob/11bd4e50e2749af26ec3b820ca93091391e14824/Syntax%20BigQuery.sql)
+- 💻 [Dimension Tables & Fact Table SQL Syntax](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/Dimension%20Tables%20%26%20Fact%20Table.sql)
+- 💻 [Stored Procedure SQL Syntax](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/Stored%20Procedures.sql)
 
 ## Author: Reno Bonasahata Pasaribu
 📫 [Email](renopasaribu17@gmail.com)
