@@ -15,6 +15,20 @@ The client faced challenges in extracting data from various sources (Excel, CSV,
 
 ## Solution
 
+### Buikd a Data Warehouse (DWH) with dimension and fact tables
+
+-
+
+### Create ETL Jobs for data migration and deduplication
+
+-
+
+### Stored Procedures
+
+#### Stored Procedure - Daily Transaction
+
+#### Stored Procedure - Balance Per-Customer
+
 
 
 ## Data Preprocessing
