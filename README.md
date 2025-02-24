@@ -143,9 +143,6 @@ Result:
 - Developed stored procedures to provide quick data summaries.
 - Achieved efficient data extraction, transformation, and loading from multiple sources.
 
-## Conclusion
-This project demonstrated the ability to design and implement a Data Warehouse, develop ETL processes, and create stored procedures to optimize data analysis and reporting for a banking industry client.
-
 ## Project Deliverables
 - 💻 [Dimension Tables & Fact Table SQL Syntax](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/Dimension%20Tables%20%26%20Fact%20Table.sql)
 - 💻 [Stored Procedure SQL Syntax](https://github.com/renopasaribu17/Data-Engineer-id-x-partners/blob/main/Stored%20Procedures.sql)
