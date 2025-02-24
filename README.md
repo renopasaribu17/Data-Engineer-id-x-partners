@@ -141,7 +141,6 @@ Result:
 This project demonstrated the ability to design and implement a Data Warehouse, develop ETL processes, and create stored procedures to optimize data analysis and reporting for a banking industry client.
 
 ## Project Deliverables
-- 🎯 [Interactive Dashboard](https://lookerstudio.google.com/u/0/reporting/f855f594-3b75-4eca-9171-8f1d2438de93)
 - 💻 [BigQuery SQL Syntax](https://github.com/renopasaribu17/Big-Data-Analytics-KimiaFarma/blob/11bd4e50e2749af26ec3b820ca93091391e14824/Syntax%20BigQuery.sql)
 
 ## Author: Reno Bonasahata Pasaribu
