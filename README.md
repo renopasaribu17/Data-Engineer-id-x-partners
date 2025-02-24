@@ -46,7 +46,91 @@ The client faced challenges in extracting data from various sources (Excel, CSV,
 
 ![img_url]()
 
-4. **Stored Procedures**: Create two stored procedures (`DailyTransaction` and `BalancePerCustomer`) to provide quick summaries of transaction data and customer balances.
+- ETL results are checked via Talend in SSMS using the SELECT query for each Dimensional Table and Fact Table.
+
+![img_url]()
+
+### Create 2 Stored Procedures
+- Stored procedures (`DailyTransaction`) used to help calculate the number of transactions and their total nominal value each day.
+
+<details>
+  <summary>SQL Query</summary>
+
+```SQL
+  CREATE PROCEDURE DailyTransaction
+(
+	@start_date DATE,
+	@end_date DATE
+)
+AS
+BEGIN
+	SELECT
+		CAST(TransactionDate AS DATE) AS Date,
+		COUNT(*) AS TotalTransactions,
+		SUM(Amount) AS TotalAmount
+	FROM 
+		FactTransaction
+	WHERE 
+		TransactionDate BETWEEN @start_date AND @end_date
+	GROUP BY 
+		CAST(TransactionDate AS DATE)
+	ORDER BY 
+		Date;
+END
+
+
+```
+</details>
+
+- Execute procedure daily transaction from 15 to 20 January 2024
+```SQL
+EXEC DailyTransaction '2024-01-15', '2024-01-20'
+```
+
+Result:
+![img_url]()
+
+- Stored procedures (`BalancePerCustomer`) used to find out the remaining balance per-customer
+
+<details>
+  <summary>SQL Query</summary>
+
+```SQL
+  CREATE PROCEDURE BalancePerCustomer
+	@name NVARCHAR(100)
+	AS
+	BEGIN
+		SELECT 
+			c.CustomerName,
+			a.AccountType,
+			a.Balance,
+			a.Balance + SUM(CASE WHEN t.transactiontype = 'Deposit'
+			THEN t.Amount ELSE -t.Amount END) AS CurrentBalance
+
+		FROM 
+			DimAccount a
+		INNER JOIN DimCustomer c ON a.CustomerID = c.customerid
+		LEFT JOIN FactTransaction t ON a.accountid = t.accountid
+
+		WHERE 
+		c.CustomerName LIKE '%' + @name + '%' AND
+		a.status = 'active'
+
+		GROUP BY 
+		c.CustomerName, a.AccountType, a.Balance;
+
+END
+
+```
+</details>
+
+- Execute procedure daily transaction from 15 to 20 January 2024
+```SQL
+EXEC BalancePerCustomer @name = 'Shelly'
+```
+
+Result:
+![img_url]()
 
 ## Results
 - Successfully created the Data Warehouse and implemented the required ETL processes.
@@ -55,62 +139,6 @@ The client faced challenges in extracting data from various sources (Excel, CSV,
 
 ## Conclusion
 This project demonstrated the ability to design and implement a Data Warehouse, develop ETL processes, and create stored procedures to optimize data analysis and reporting for a banking industry client.
-
-<details>
-  <summary>SQL Query</summary>
-
-```SQL
-  CREATE TABLE dataset_kimiafarma.kf_analisis AS
-SELECT ft.transaction_id, ft.date, ft.branch_id, kc.branch_name, kc.kota, kc.provinsi, kc.rating as rating_cabang, ft.customer_name, ft.product_id, p.product_name, ft.price as actual_price, ft.discount_percentage, 
-
-CASE
-    WHEN ft.price <= 50000 THEN 0.1
-    WHEN ft.price > 50000 AND ft.price <= 100000 THEN 0.15
-    WHEN ft.price > 100000 AND ft.price <= 300000 THEN 0.2
-    WHEN ft.price > 300000 AND ft.price <= 500000 THEN 0.25
-    WHEN ft.price > 500000 THEN 0.3
-        END AS persentase_gross_laba,
-
-ft.price - (ft.price * ft.discount_percentage) as nett_sales,
-
-CASE
-    WHEN ft.price <= 50000 THEN 0.1 * ft.price
-    WHEN ft.price > 50000 AND ft.price <= 100000 THEN 0.15 * ft.price
-    WHEN ft.price > 100000 AND ft.price <= 300000 THEN 0.2 * ft.price
-    WHEN ft.price > 300000 AND ft.price <= 500000 THEN 0.25 * ft.price
-    WHEN ft.price > 500000 THEN 0.3 * ft.price
-        END AS nett_profit,
-
-ft.rating as rating_transaksi
-
-FROM dataset_kimiafarma.kf_final_transaction as ft
-
-LEFT JOIN dataset_kimiafarma.kf_kantor_cabang as kc
-  ON ft.branch_id = kc.branch_id
-
-LEFT JOIN dataset_kimiafarma.kf_product as p
-  ON ft.product_id = p.product_id;
-
-```
-</details>
-
-![img_url](https://github.com/renopasaribu17/Big-Data-Analytics-KimiaFarma/blob/main/assets/Data%20Analysis%20and%20Aggregation.png?raw=true)
-
-## Dashboard Visualization & Insights
-
-### Dashboard
-![img_url](https://github.com/renopasaribu17/Big-Data-Analytics-KimiaFarma/blob/main/assets/Performance_Analytics_Dashboard.png?raw=true)
-
-### Key Insights
-- Total profit reached IDR98.6 billion, with an average branch rating of 4.4 and a total of 672.5 thousand transactions.
-- West Java dominates the number of transactions and sales at the provincial level.
-- There is a significant purchasing trend for hypnotic and anxiolytic drugs, indicating the high demand of the Indonesian people for stress and anxiety management solutions.
-- Kimia Farma branches in Pematangsiantar, Jambi, and Batam have a high reputation for service quality (highest branch rating), but lower transaction ratings indicate potential for improvement in the transaction experience.
-
-### Recommendations
-- Discount Strategy Optimization: Focus on high margin product categories (>20%).
-- Service Quality Improvement: Special training for low rating branches.
-- Product Expansion: Adding product variants for high sales areas
 
 ## Project Deliverables
 - 🎯 [Interactive Dashboard](https://lookerstudio.google.com/u/0/reporting/f855f594-3b75-4eca-9171-8f1d2438de93)
