@@ -1,15 +1,21 @@
-# Performance Analytics Dashboard: Kimia Farma (2020-2023) 📊
-Kimia Farma Company is the largest pharmaceutical company in Indonesia, founded in 1817. The company is engaged in the production and distribution of pharmaceutical products, medical devices, and other health products.
-Kimia Farma is also involved in drug research and development and provides health services through its pharmacy network throughout Indonesia.
+# Designing Data Warehouse & Stored Procedures for id/x partner's Client 📊
+ID/X Partners (PT IDX Consulting) was founded in 2002 and has been providing services to companies across Asia and Australia in various industries, especially financial services, telecommunications, manufacturing, and retail. ID/X Partners offers consulting services that specialize in utilizing Data Analytic and Decisioning (DAD) solutions, combined with risk management and integrated marketing disciplines, to help clients optimize portfolio profitability and business processes.
 
-## Project Background
-As part of the Big Data Analytics internship program at Kimia Farma, this project aims to analyze business performance for 4 years (2020-2023) through big data. This project focuses on complex data processing to visualization in the form of an easy-to-understand dashboard for strategic decision making.
+## Overview
+This project was completed as part of the Data Engineer Test for ID/X Partners. The goal of the project was to create a Data Warehouse and implement ETL processes to optimize data extraction, transformation, and loading from multiple sources for a banking industry client.
 
 ### Tools & Technologies Used:
-- 🦫 Dbeaver
-- 📁 GitHub
-- ⌨ Google BigQuery
-- 📊 Google Looker Studio
+- 🦫 Open Talend Studio
+- 📁 Microsoft SQL Server
+- ⌨ Server Management Studio (SSMS)
+- 📊 GitHub
+
+## Problem Statement
+The client faced challenges in extracting data from various sources (Excel, CSV, and SQL Server databases) simultaneously, leading to delays in reporting and data analysis. The primary objective was to streamline the ETL process and create a centralized Data Warehouse to facilitate efficient data analysis and reporting.
+
+## Solution
+
+
 
 ## Data Preprocessing
 
